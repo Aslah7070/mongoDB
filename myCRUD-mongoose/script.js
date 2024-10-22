@@ -24,10 +24,11 @@ const Person=mongoose.model('Person',ProductSchema);
 
 app.post("/persons",async(req,res)=>{
    try {
+    const {name,age,place}=req.body
     const person =new Person({
-        name:req.body.name,
-        age:req.body.age,
-        place:req.body.place
+        name,
+        age,
+        place
     })
     const result=await person.save();
     res.send(result)
@@ -38,13 +39,11 @@ app.post("/persons",async(req,res)=>{
 
 })
 app.get("/persons",async(req,res)=>{
-       try {
+      
         const result=await Person.find()
        res.send(result)
-       } catch (error) {
-        console.log(error);
-        
-       }
+       
+  
 })
 
 app.put("/persons/:id",async (req,res)=>{
