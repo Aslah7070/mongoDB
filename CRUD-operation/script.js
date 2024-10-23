@@ -54,7 +54,7 @@ mongoose.connect('mongodb://localhost:27017/crud_example')
           price: req.body.price,
           inStock: req.body.inStock,
         },
-        { new: true } // Return the updated document
+        { new: true } 
       );
       if (!product) return res.status(404).send('Product not found');
       res.send(product);
